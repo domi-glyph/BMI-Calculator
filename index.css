@@ -1,0 +1,38 @@
+body{
+  background-color: #FFEBB4;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1{
+  text-align: center;
+}
+
+input[type="radio"]{
+  visibility: hidden;
+}
+
+.gender-radiogroup{
+  display: flex;
+  flex-direction: row;
+}
+
+.gender-radio{
+  background-color: white;
+  height: 120px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: 16px;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+div :hover .gender-radio {
+  transition: border ease-in-out 0.15s;
+  border: 4px solid #FFACAC;
+}
+
+.gender-radio img{
+  height: 80px;
+}
