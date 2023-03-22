@@ -1,9 +1,16 @@
+import {calculate} from './calculate.js';
+
 //#region variables and DOM queries
 let selectedButton = null;
+let myBMI = 0;
 const genderButtons = document.querySelectorAll(".gender-radio");
 const ageSlider = document.getElementById('age-slider');
 const ageInput = document.getElementById('age-input');
-//#endregion of variable and DOM queries
+// const submitBtn = document.querySelector('button[type="submit"]');
+const thisForm = document.getElementById('this-form');
+const heightValue = document.getElementById("height");
+const weightValue = document.getElementById("weight");
+
 
 //#region default value
 ageSlider.value = 18;
@@ -11,15 +18,19 @@ ageInput.value = 18;
 
 //#endregion of default value
 
+//update age number input when slider bvalue change
 ageSlider.addEventListener("input", () => {
   ageInput.value = ageSlider.value;
 })
 
+//update age slider when input age number change
 ageInput.addEventListener("input", () => {
   ageSlider.value = ageInput.value;
 })
 
+// loop gender choice and attached event listener mouse enter, mouse leave and click
 genderButtons.forEach(function(button) {
+  //remove all choice to default, apply image change and class hoverselect to currently mouse enter
   button.addEventListener("mouseenter", function() {
     genderButtons.forEach(function(btn) {
       btn.classList.remove("hoverselect");
@@ -32,6 +43,7 @@ genderButtons.forEach(function(button) {
     img.src = img.src.replace("-gray.png", "-hover.png");
   });
 
+  //event on mouseleave, leave on selection set img hover and class hover select, leave on not selected return to original img and class 
   button.addEventListener("mouseleave", function() {
     if(this !== selectedButton){
       this.classList.remove("hoverselect")
@@ -46,7 +58,19 @@ genderButtons.forEach(function(button) {
     }
   });
 
+  //click event save selection on selectedButton
   button.addEventListener("click", function() {
     selectedButton = button;
   });
 });
+
+//form submission
+thisForm.addEventListener("submit", function(event){
+  event.preventDefault();
+
+  if(heightValue.value > 0 && weightValue.value >0){
+    const myBMI = calculate({height: heightValue.value, weight: weightValue.value})
+    console.log(myBMI)
+  }
+})
+
