@@ -1,5 +1,3 @@
-import {calculate} from './calculate.js';
-
 //#region variables and DOM queries
 let selectedButton = null;
 let myBMI = 0;
@@ -10,6 +8,9 @@ const ageInput = document.getElementById('age-input');
 const thisForm = document.getElementById('this-form');
 const heightValue = document.getElementById("height");
 const weightValue = document.getElementById("weight");
+const resultSection = document.getElementById("BMI-result");
+const BMIResultDOM = document.getElementById("BMI-score");
+const BMICategoryDOM = document.getElementById("BMI-category");
 
 
 //#region default value
@@ -64,13 +65,43 @@ genderButtons.forEach(function(button) {
   });
 });
 
+//calculate BMI function
+function calculate({height=150, weight}){
+  return weight/((height / 100) ** 2);
+}
+
 //form submission
 thisForm.addEventListener("submit", function(event){
   event.preventDefault();
 
   if(heightValue.value > 0 && weightValue.value >0){
-    const myBMI = calculate({height: heightValue.value, weight: weightValue.value})
-    console.log(myBMI)
+    const myBMI = calculate({height: heightValue.value, weight: weightValue.value});
+
+    BMIResultDOM.innerText = myBMI.toFixed(0);
+
+    if(myBMI < 16){
+      BMICategoryDOM.innerText = "You are classified as Severe Thinness";
+    }else if(myBMI <= 17){
+      BMICategoryDOM.innerText = "You are classified as Moderate Thinness";
+    }else if(myBMI <= 18.5){
+      BMICategoryDOM.innerText = "You are classified as Mild Thinness";
+    }else if(myBMI <= 25){
+      BMICategoryDOM.innerText = "You are classified as Normal";
+    }else if(myBMI <= 30){
+      BMICategoryDOM.innerText = "You are classified as Overweight";
+    }else if(myBMI <= 35){
+      BMICategoryDOM.innerText = "You are classified as Obese Class I";
+    }else if(myBMI <=40){
+      BMICategoryDOM.innerText = "You are classified as Obese Class II";
+    }else{
+      BMICategoryDOM.innerText = "You are classified as Obese Class III";
+    }
+    
+    const resultPosition = resultSection.offsetTop;
+    window.scrollTo({
+      top: resultPosition,
+      behavior: "smooth"
+    })
   }
 })
 
