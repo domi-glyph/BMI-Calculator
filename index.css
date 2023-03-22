@@ -1,19 +1,46 @@
 body{
-  background-color: #FFEBB4;
+  background-color: #FEFAE0;
   font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+
+nav{
+  background-color: #CCD5AE;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 16px;
+}
+
+nav div{
+  display: flex;
+  flex-direction: row;
+}
+
+.navLink{
+  color: black;
+  text-decoration: none;
+  margin-inline: 12px;
 }
 
 h1{
   text-align: center;
 }
 
-input[type="radio"]{
+.gender-radio input[type="radio"]{
   visibility: hidden;
+  display: none;
 }
 
 .gender-radiogroup{
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  height: 150px;
+  margin-block: 16px;
 }
 
 .gender-radio{
@@ -28,9 +55,14 @@ input[type="radio"]{
   border-radius: 8px;
 }
 
-div :hover .gender-radio {
+/* .gender-radio:hover {
   transition: border ease-in-out 0.15s;
-  border: 4px solid #FFACAC;
+  border: 4px solid #CCD5AE;
+} */
+
+.gender-radio.hoverselect{
+  transition: border ease-in-out 0.15s;
+  border: 4px solid #CCD5AE;
 }
 
 .gender-radio img{
