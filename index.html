@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BMI Calculator</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <nav>
@@ -20,49 +23,101 @@
       </div>
     </nav>
     <form id="this-form">
-      
-      <label for="gender" class="form-label">Your Gender</label>
+      <label for="gender" class="form-label" style="margin-top: 8vh"
+        >Your Gender</label
+      >
+      <p id="gender-error-msg" style="margin-top: 4px">
+        Please select one of below
+      </p>
       <div class="divider gender-radiogroup">
-
         <label for="male" class="gender-radio">
-          <input type="radio" id="male" name="gender" value="male" required>
+          <input type="radio" id="male" name="gender" value="male" required />
           <img src="assets/male-gray.png" alt="male" />
         </label>
 
         <label for="female" class="gender-radio">
-          <input type="radio" id="female" name="gender" value="female">
+          <input type="radio" id="female" name="gender" value="female" />
           <img src="assets/female-gray.png" alt="female" />
         </label>
-
       </div>
 
-      <div style="width:100%; display: flex ; justify-content: center;">
-      <div class="divider inputs">
-        <div>
-          <label for="age" class="form-label">Your Age</label>
-          <input type="number" id="age-input" name="age" min="1" max="100"><br />
-          <input type="range" id="age-slider" name="age" min="1" max="100">
-        </div>
+      <div style="width: 100%; display: flex; justify-content: center">
+        <div class="divider inputs">
+          <div>
+            <label for="age" class="form-label">Your Age</label>
+            <input
+              type="number"
+              id="age-input"
+              name="age"
+              min="1"
+              max="100"
+            /><br />
+            <input type="range" id="age-slider" name="age" min="1" max="100" />
+          </div>
 
-        <div>
-          <label for="weight" class="form-label">Weight (in Kg)</label>
-          <input type="number" id="weight" name="weight" min="1" required>
-        </div>
+          <div>
+            <label for="weight" class="form-label">Weight (in Kg)</label>
+            <input type="number" id="weight" name="weight" min="1" required />
+          </div>
 
-        <div>
-        <label for="height" class="form-label">Your Height (in cm)</label>
-        <input type="number" id="height" name="height" min="1" required>
+          <div>
+            <label for="height" class="form-label">Your Height (in cm)</label>
+            <input type="number" id="height" name="height" min="1" required />
+          </div>
         </div>
       </div>
-    </div>
 
       <button type="submit">Calculate My BMI (Kg/m2)</button>
     </form>
 
-    <section id="BMI-result" style="margin-top: 30vh">
+    <section id="BMI-result" style="margin-top: 35vh">
       <h1>Your BMI score is</h1>
       <h2 id="BMI-score">0</h2>
       <p id="BMI-category">You are classified as ____</p>
+      <br />
+
+      <table>
+        <thead>
+          <tr>
+            <th>Classification</th>
+            <th>BMI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Severe Thinness</td>
+            <td>Less Than 16</td>
+          </tr>
+          <tr>
+            <td>Moderate Thinness</td>
+            <td>16 - 17</td>
+          </tr>
+          <tr>
+            <td>Mild Thinness</td>
+            <td>17 - 18.5</td>
+          </tr>
+          <tr>
+            <td>Normal</td>
+            <td>18.5 - 25</td>
+          </tr>
+          <tr>
+            <td>Overweight</td>
+            <td>25 - 30</td>
+          </tr>
+          <tr>
+            <td>Obese Class I</td>
+            <td>30 - 35</td>
+          </tr>
+          <tr>
+            <td>Obese Class II</td>
+            <td>35 - 40</td>
+          </tr>
+          <tr>
+            <td>Obese Class III</td>
+            <td>More Than 40</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <script src="index.js"></script>
