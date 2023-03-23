@@ -22,16 +22,16 @@
         <a class="navLink" href="/learn">Learn</a>
       </div>
     </nav>
-    <form id="this-form">
+    <form id="this-form" novalidate>
       <label for="gender" class="form-label" style="margin-top: 8vh"
         >Your Gender</label
       >
-      <p id="gender-error-msg" style="margin-top: 4px">
+      <p class="gender-error-msg" id="gender-error-msg" style="margin-top: 4px">
         Please select one of below
       </p>
       <div class="divider gender-radiogroup">
         <label for="male" class="gender-radio">
-          <input type="radio" id="male" name="gender" value="male" required />
+          <input type="radio" id="male" name="gender" value="male" required/>
           <img src="assets/male-gray.png" alt="male" />
         </label>
 
@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <button type="submit">Calculate My BMI (Kg/m2)</button>
+      <button type="submit">Calculate My BMI</button>
     </form>
 
     <section id="BMI-result" style="margin-top: 35vh">

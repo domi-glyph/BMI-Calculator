@@ -43,6 +43,15 @@ h1{
   justify-content: center;
 }
 
+.gender-error-msg{
+  color: red;
+  visibility: hidden;
+}
+
+.gender-error-msg.error{
+  visibility: visible;
+}
+
 .gender-radio input[type="radio"]{
   visibility: hidden;
   display: none;

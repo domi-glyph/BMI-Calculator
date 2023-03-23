@@ -4,14 +4,13 @@ let myBMI = 0;
 const genderButtons = document.querySelectorAll(".gender-radio");
 const ageSlider = document.getElementById('age-slider');
 const ageInput = document.getElementById('age-input');
-// const submitBtn = document.querySelector('button[type="submit"]');
 const thisForm = document.getElementById('this-form');
 const heightValue = document.getElementById("height");
 const weightValue = document.getElementById("weight");
 const resultSection = document.getElementById("BMI-result");
 const BMIResultDOM = document.getElementById("BMI-score");
 const BMICategoryDOM = document.getElementById("BMI-category");
-
+const errorMsg = document.getElementById("gender-error-msg");
 
 //#region default value
 ageSlider.value = 18;
@@ -73,35 +72,52 @@ function calculate({height=150, weight}){
 //form submission
 thisForm.addEventListener("submit", function(event){
   event.preventDefault();
-
   if(heightValue.value > 0 && weightValue.value >0){
-    const myBMI = calculate({height: heightValue.value, weight: weightValue.value});
 
-    BMIResultDOM.innerText = myBMI.toFixed(0);
-
-    if(myBMI < 16){
-      BMICategoryDOM.innerText = "You are classified as Severe Thinness";
-    }else if(myBMI <= 17){
-      BMICategoryDOM.innerText = "You are classified as Moderate Thinness";
-    }else if(myBMI <= 18.5){
-      BMICategoryDOM.innerText = "You are classified as Mild Thinness";
-    }else if(myBMI <= 25){
-      BMICategoryDOM.innerText = "You are classified as Normal";
-    }else if(myBMI <= 30){
-      BMICategoryDOM.innerText = "You are classified as Overweight";
-    }else if(myBMI <= 35){
-      BMICategoryDOM.innerText = "You are classified as Obese Class I";
-    }else if(myBMI <=40){
-      BMICategoryDOM.innerText = "You are classified as Obese Class II";
-    }else{
-      BMICategoryDOM.innerText = "You are classified as Obese Class III";
+    //check if gender is selected
+    let isChecked = false;
+    for (let i = 0; i < genderButtons.length; i++) {
+      console.log("button check", genderButtons[i].checked)
+      if (genderButtons[i].querySelector("input").checked) {
+        isChecked = true;
+        break;
+      }
     }
-    
-    const resultPosition = resultSection.offsetTop;
-    window.scrollTo({
-      top: resultPosition,
-      behavior: "smooth"
-    })
+
+    if(isChecked){
+      //form validated, next step continue calculate BMI and append to DOM
+      errorMsg.classList.remove("error");
+
+      const myBMI = calculate({height: heightValue.value, weight: weightValue.value});
+
+      BMIResultDOM.innerText = myBMI.toFixed(0);
+
+      if(myBMI < 16){
+        BMICategoryDOM.innerText = "You are classified as Severe Thinness";
+        }else if(myBMI <= 17){
+          BMICategoryDOM.innerText = "You are classified as Moderate Thinness";
+        }else if(myBMI <= 18.5){
+          BMICategoryDOM.innerText = "You are classified as Mild Thinness";
+        }else if(myBMI <= 25){
+          BMICategoryDOM.innerText = "You are classified as Normal";
+        }else if(myBMI <= 30){
+          BMICategoryDOM.innerText = "You are classified as Overweight";
+        }else if(myBMI <= 35){
+          BMICategoryDOM.innerText = "You are classified as Obese Class I";
+        }else if(myBMI <=40){
+          BMICategoryDOM.innerText = "You are classified as Obese Class II";
+        }else{
+          BMICategoryDOM.innerText = "You are classified as Obese Class III";
+        }
+        
+        const resultPosition = resultSection.offsetTop;
+        window.scrollTo({
+          top: resultPosition,
+          behavior: "smooth"
+        })
+    }else{
+      errorMsg.classList.add("error");
+    }
   }
 })
 
