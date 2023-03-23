@@ -12,6 +12,8 @@ nav{
   justify-content: space-between;
   align-items: center;
   padding-inline: 16px;
+  position: sticky;
+  top: 0;
 }
 
 nav div{
@@ -88,4 +90,16 @@ input[type="number"]{
 button{
   font-size: x-large;
   text-align: center;
+}
+
+table{
+  border: 1px solid gray;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th, td{
+  border: 1px solid gray;
+  padding: 4px;
+  min-width: 160px;
 }
